@@ -5,14 +5,14 @@ import mysql.connector
 #-------------------------------------------------
 api_key="f3bd7bbd-0987-4dd9-bae8-f0aab5856547"
 url2 = "https://api.harvardartmuseums.org/object"
-sql_password='Slidesg*5214'
+sql_password='password'
 database_name='test11'
 #--------------------------------------------------
 
 final=[]
 def get_final_out(artifact):
     object_json2=[]
-    for i in range(1,2):
+    for i in range(1,26):
         params = {'apikey':api_key,
               "size":100,
               "page":i,
@@ -29,7 +29,7 @@ def get_final_out(artifact):
 
 def metadata_f(final_out):
     metadata=[]
-    for j in range(25):
+    for j in range(2500):
             temp=dict(id=final_out[j]['id'],
             title=final_out[j]['title'],
             culture=final_out[j]['culture'],
@@ -50,7 +50,7 @@ def metadata_f(final_out):
 
 def media_f(final_out):
     media=[]
-    for j in range(25):
+    for j in range(2500):
         temp=dict(
         objectid=final_out[j]['objectid'],
         imagecount=final_out[j]['imagecount'],
@@ -67,7 +67,7 @@ def media_f(final_out):
 
 def color_f(final_out):
     colr=[]
-    for j in range(25):
+    for j in range(2500):
         f=final_out[j].get('colors')
         if f is not None:
             for k in f:
@@ -700,4 +700,5 @@ if current_selection not in classification_sql:
 
 
     
+
 
